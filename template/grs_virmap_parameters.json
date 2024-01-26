@@ -1,0 +1,30 @@
+{
+    "PARAMETERS":{
+        "BUILD_ENVIRONEMNT":{
+            "bowtie2_build": "--seed 123456789 --offrate 5 --ftabchars 10",
+            "snpeff_build": ""
+        },
+
+        "PRE_PROCESS":{
+            "bbtools_reformat": "overwrite=t crashjunk=f fixjunk=t iupacToN=t ignorebadquality=t tossbrokenreads=t minlength=3 maxcalledquality=41 mincalledquality=2",
+            "fastp_trim": "--length_required 9 --compression 4 --overrepresentation_analysis --low_complexity_filter --complexity_threshold 30 --unqualified_percent_limit 100 --qualified_quality_phred 1",
+            "bowtie2_decon": "--very-sensitive-local --no-mixed -X 1200"
+        },
+
+        "ALIGNMENT":{
+            "bowtie2_map": "-k10 --local -X 1500",
+            "kraken2_map": "--memory-mapping --use-names --minimum-base-quality 0 --gzip-compressed"
+        },
+
+        "VARIANT_CALLING":{
+            "freebayes_haplotypecaller": "--pooled-continuous --min-alternate-fraction 0.01 --use-duplicate-reads",
+            "snpeff_ann": "-no-intergenic -no-upstream -no-downstream -no-utr"
+        },
+
+        "REPORT":{
+            "bcftools_merge": "--missing-to-ref",
+            "snpeff_ann": "-no-intergenic -no-upstream -no-downstream -no-utr"
+        }
+    }
+    
+}

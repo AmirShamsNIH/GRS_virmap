@@ -1,0 +1,18 @@
+
+{
+	"custom_virmapDB": {
+		"cmd": "custom_virmapDB",
+		"conda": "custom_virmapDB",
+		"extra_prefix": "",
+		"tag": ".custom_virmapDB",
+		"message": "running custom_virmapDB: ",
+		"target": ".custom_virmapDB.target",
+		"input_extension": ["*"],
+		
+		"options": {
+			"fastq": "",
+			"fasta": ""
+		}
+	}
+
+}

@@ -1,0 +1,25 @@
+
+{
+	"cat_concat": {
+		"cmd": "cat_concat",
+		"conda": "cat_concat",
+		"extra_prefix": "",
+		"tag": ".cat_concat",
+		"message": "running cat_concat: ",
+		"target": ".cat_concat.target",
+        "log": ".cat_concat.log",
+        "input_extension":{
+            "input1_extension": ".fastq.gz"
+        },
+        "output_extension":{
+            "output1_extension": ".R1.fastq.gz"
+        },
+        "report_extension":{
+        },
+        "options":{
+            "fastq": "--format fastq --kmers 7 ",
+            "fasta": ""
+        }
+	}
+
+}

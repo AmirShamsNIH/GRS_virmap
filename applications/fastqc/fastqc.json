@@ -1,0 +1,19 @@
+
+{
+	"fastqc_qc": {
+		"cmd": "fastqc_qc",
+		"conda": "fastqc_qc_conda",
+		"extra_prefix": "",
+		"tag": ".fastqc_qc",
+		"message": "running fastqc_qc: ",
+		"target": ".fastqc_qc.target",
+        "log": ".fastqc_qc.log",
+        "input_extension":[".fastq.gz",".bam"],
+        "input_tag": [""],
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	}
+
+}

@@ -1,0 +1,18 @@
+{
+	"snpeff_annotate": {
+		"cmd": "snpeff",
+		"conda": "snpeff_conda",
+		"extra_prefix": "",
+		"tag": ".snpeff_annotate",
+		"message": "running snpeff_annotate: ",
+		"target": ".snpeff_annotate.target",
+        "log": ".snpeff_annotate.log",
+        "input_extension":[".vcf.gz"],
+        "input_tag": [""],
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	}
+
+}

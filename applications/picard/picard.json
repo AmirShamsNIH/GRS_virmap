@@ -1,0 +1,16 @@
+{
+    "picard_nodup": {
+        "cmd": "picard_nodup",
+        "conda": "picard_nodup",
+        "extra_prefix": "",
+        "tag": ".picard_nodup",
+        "message": "running picard_nodup: ",
+        "target": ".picard_nodup.target",
+        "log": ".picard_nodup.log",
+        "input_extension":[".bam"],
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+    }
+}

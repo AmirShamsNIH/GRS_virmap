@@ -1,0 +1,36 @@
+
+{
+
+	"bowtie2_decon": {
+		"cmd": "bowtie2_decon",
+		"conda": "bowtie2_decon_conda",
+		"extra_prefix": "",
+		"tag": ".bowtie2_decon",
+		"message": "running bowtie2_decon: ",
+		"target": ".bowtie2_decon.target",
+        "log": ".bowtie2_decon.log",
+        "input_extension":[".fastq.gz"],
+        "input_tag": [".fastp_trim"],
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	},
+
+	"bowtie2_map": {
+		"cmd": "bowtie2_map",
+		"conda": "bowtie2_map",
+		"extra_prefix": "",
+		"tag": ".bowtie2_map",
+		"message": "running bowtie2_map: ",
+		"target": ".bowtie2_map.target",
+        "log": ".bowtie2_map.log",
+        "input_extension":[".fastq.gz"],
+        "input_tag": [""],
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	}
+
+}

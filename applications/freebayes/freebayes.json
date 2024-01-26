@@ -1,0 +1,17 @@
+{
+	"freebayes_haplotypecaller": {
+		"cmd": "freebayes_haplotypecaller",
+		"conda": "freebayes_haplotypecaller_conda",
+		"extra_prefix": "",
+		"tag": ".freebayes_haplotypecaller",
+		"message": "running freebayes_haplotypecaller: ",
+		"target": ".freebayes_haplotypecaller.target",
+        "log": ".freebayes_haplotypecaller.log",
+        "input_extension":[".bam"],
+		"options": {
+            "fastq": "overwrite=t crashjunk=f fixjunk=t iupacToN=t ignorebadquality=t tossbrokenreads=t minlength=3 maxcalledquality=41 mincalledquality=2",
+            "fasta": "qfake=40 overwrite=t crashjunk=f fixjunk=t iupacToN=t ignorebadquality=t tossbrokenreads=t minlength=3"
+		}
+	}
+
+}

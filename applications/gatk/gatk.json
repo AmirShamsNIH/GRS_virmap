@@ -1,0 +1,31 @@
+{
+	"gatk_haplotypecaller": {
+		"cmd": "gatk_haplotypecaller",
+		"conda": "gatk_haplotypecaller_conda",
+		"extra_prefix": "",
+		"tag": ".gatk_haplotypecaller",
+		"message": "running gatk_haplotypecaller: ",
+		"target": ".gatk_haplotypecaller.target",
+        "log": ".gatk_haplotypecaller.log",
+        "input_extension":[".bam"],
+		"options": {
+            "fastq": "overwrite=t crashjunk=f fixjunk=t iupacToN=t ignorebadquality=t tossbrokenreads=t minlength=3 maxcalledquality=41 mincalledquality=2",
+            "fasta": "qfake=40 overwrite=t crashjunk=f fixjunk=t iupacToN=t ignorebadquality=t tossbrokenreads=t minlength=3"
+		}
+	},
+	"gatk_combine": {
+		"cmd": "gatk_combine",
+		"conda": "gatk_combine",
+		"extra_prefix": "",
+		"tag": ".gatk_combine",
+		"message": "running gatk_combine: ",
+		"target": ".gatk_combine.target",
+        "log": ".gatk_combine.log",
+        "input_extension":[".vcf.gz"],
+		"options": {
+            "fastq": "overwrite=t crashjunk=f fixjunk=t iupacToN=t ignorebadquality=t tossbrokenreads=t minlength=3 maxcalledquality=41 mincalledquality=2",
+            "fasta": "qfake=40 overwrite=t crashjunk=f fixjunk=t iupacToN=t ignorebadquality=t tossbrokenreads=t minlength=3"
+		}
+	}
+
+}

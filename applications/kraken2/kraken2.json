@@ -1,0 +1,18 @@
+{
+	"kraken2_map": {
+		"cmd": "kraken2",
+		"conda": "kraken2_conda",
+		"extra_prefix": "",
+		"tag": ".kraken2_map",
+		"message": "running kraken2_map: ",
+		"target": ".kraken2_map.target",
+        "log": ".kraken2_map.log",
+        "input_extension":[".fastq.gz"],
+        "input_tag": [""],
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	}
+
+}

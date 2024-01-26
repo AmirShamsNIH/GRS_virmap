@@ -1,0 +1,10 @@
+__default__:
+  partition: norm
+  time: 24:00
+  core: 30
+  memory: 40000
+  jobname: "GRS_Snake.VIRMAP'.{rule}.{wildcards.snakerule}.{wildcards.sample}'"
+  extra: "--gres=lscratch:500"
+  output: "GRS_Snake.VIRMAP'.{rule}.{wildcards.snakerule}.{wildcards.sample}'.stderr"
+  error: "GRS_Snake.VIRMAP'.{rule}.{wildcards.snakerule}.{wildcards.sample}'.stdout"
+

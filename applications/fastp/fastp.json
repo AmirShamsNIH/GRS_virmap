@@ -1,0 +1,19 @@
+
+{
+	"fastp_trim": {
+		"cmd": "fastp",
+		"conda": "fastp_conda",
+		"extra_prefix": "",
+		"tag": ".fastp_trim",
+		"message": "running fastp_trim: ",
+		"target": ".fastp_trim.target",
+        "log": ".fastp_trim.log",
+        "input_extension":[".fastq.gz"],
+        "input_tag": [""],
+        "options":{
+            "fastq": "--length_required 9 --compression 4 --overrepresentation_analysis --low_complexity_filter --complexity_threshold 30 --unqualified_percent_limit 100 --qualified_quality_phred 1",
+            "fasta": ""
+        }
+	}
+
+}

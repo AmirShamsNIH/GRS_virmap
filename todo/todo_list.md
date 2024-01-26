@@ -1,0 +1,1 @@
+ - makesure failed sample left behind not crashing the whole pipeline

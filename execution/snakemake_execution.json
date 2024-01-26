@@ -1,0 +1,40 @@
+{
+    "application_dependency":{
+        "build_environment":{
+            "custom_virmapDB":["None"]
+        },
+        "pre_process":{
+            "bbtools_reformat":["start_point"],
+            "fastp_trim": ["bbtools_reformat"],
+            "bowtie2_decon": ["fastp_trim"],
+            "samtools_flagstat": ["fastp_trim", "bowtie2_decon"],
+            "samtools_idxstats": ["fastp_trim", "bowtie2_decon"],
+            "fastqc_qc": ["*"],
+            "multiqc_qc": ["*"]
+        },
+        "alignment": {
+            "bowtie2_map": ["bowtie2_decon"],
+            "kraken2_map": ["bowtie2_decon"],
+            "samtools_flagstat": ["bowtie2_map"],
+            "samtools_idxstats": ["bowtie2_map"],
+            "fastqc_qc": ["*"],
+            "multiqc_qc": ["*"]
+        },
+        "variant_calling": {
+            "freebayes_haplotypecaller": ["bowtie2_map"],
+            "multiqc_qc": ["*"]
+        },
+        "report": {
+            "bcftools_merge":["aggregate+freebayes_haplotypecaller"],
+            "multiqc_qc": ["*"]
+        }
+    },
+    "application_order": {
+        "build_environment": ["custom_virmapDB"],
+        "pre_process": ["bbtools_reformat", "fastp_trim", "bowtie2_decon","samtools_flagstat", "samtools_idxstats", "fastqc_qc", "multiqc_qc"],
+        "alignment": ["bowtie2_map", "kraken2_map", "samtools_flagstat", "samtools_idxstats", "fastqc_qc", "multiqc_qc"],
+        "variant_calling": ["freebayes_haplotypecaller", "multiqc_qc"],
+        "report": ["bcftools_merge", "multiqc_qc"]
+    },
+    "execution_order":["build_environment", "pre_process", "alignment", "variant_calling", "report"]
+}

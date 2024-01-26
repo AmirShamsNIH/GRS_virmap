@@ -1,0 +1,18 @@
+
+{
+	"bbtools_reformat": {
+		"cmd": "reformat.sh",
+		"conda": "bbtools_conda",
+		"extra_prefix": "",
+		"tag": ".bbtools_reformat",
+		"message": "running bbtools_reformat: ",
+		"target": ".bbtools_reformat.target",
+		"input_extension": [".fastq", ".fastq.gz", ".fq", ".fq.gz", ".fasta", ".fasta.gz", ".fa", ".fa.gz"],
+		
+		"options": {
+			"fastq": "overwrite=t crashjunk=f fixjunk=t iupacToN=t ignorebadquality=t tossbrokenreads=t minlength=3 maxcalledquality=41 mincalledquality=2",
+			"fasta": "qfake=40 overwrite=t crashjunk=f fixjunk=t iupacToN=t ignorebadquality=t tossbrokenreads=t minlength=3"
+		}
+	}
+
+}

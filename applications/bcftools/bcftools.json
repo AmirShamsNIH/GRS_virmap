@@ -1,0 +1,17 @@
+{
+	"bcftools_merge": {
+		"cmd": "bcftools_merge",
+		"conda": "bcftools_merge",
+		"extra_prefix": "",
+		"tag": ".bcftools_merge",
+		"message": "running bcftools_merge: ",
+		"target": ".bcftools_merge.target",
+        "log": ".bcftools_merge.log",
+        "input_extension":[".vcf.gz"],
+        
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	}
+}

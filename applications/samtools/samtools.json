@@ -1,0 +1,32 @@
+{
+	"samtools_flagstat": {
+		"cmd": "samtools_flagstat",
+		"conda": "samtools_flagstat",
+		"extra_prefix": "",
+		"tag": ".samtools_flagstat",
+		"message": "running samtools_flagstat: ",
+		"target": ".samtools_flagstat.target",
+        "log": ".samtools_flagstat.log",
+        "input_extension":[".bam"],
+        
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	},
+    "samtools_idxstats": {
+		"cmd": "samtools idxstats",
+		"conda": "samtools_idxstats",
+		"extra_prefix": "",
+		"tag": ".samtools_idxstats",
+		"message": "running samtools_idxstats: ",
+		"target": ".samtools_idxstats.target",
+        "log": ".samtools_idxstats.log",
+        "input_extension":[".bam"],
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	}
+
+}

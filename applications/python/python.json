@@ -1,0 +1,18 @@
+{
+	"python_mapping_report": {
+		"cmd": "python_mapping_report",
+		"conda": "python_mapping_report_conda",
+		"extra_prefix": "",
+		"tag": ".python_mapping_report",
+		"message": "running python_mapping_report: ",
+		"target": ".python_mapping_report.target",
+        "log": ".python_mapping_report.log",
+        "input_extension":["*.txt"],
+        "input_tag": [""],
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	}
+
+}

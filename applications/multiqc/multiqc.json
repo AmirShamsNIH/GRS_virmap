@@ -1,0 +1,18 @@
+{
+	"multiqc_qc": {
+		"cmd": "multiqc_qc",
+		"conda": "multiqc_qc_conda",
+		"extra_prefix": "",
+		"tag": ".multiqc_qc",
+		"message": "running multiqc_qc: ",
+		"target": ".multiqc_qc.target",
+        "log": ".multiqc_qc.log",
+        "input_extension":["*"],
+        "input_tag": [""],
+        "options":{
+            "fastq": "",
+            "fasta": ""
+        }
+	}
+
+}
