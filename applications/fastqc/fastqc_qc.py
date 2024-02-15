@@ -28,7 +28,7 @@ def fastqc_qc_script(general_Dict):
 	execution_script = ""
 	execution_script += "# +++++++++++++++++++++++++++++++++++++++++++\n"
 	if general_Dict["CONFIG"]["EXECUTION_PLATFORM"] == "BIOWULF":
-		execution_script += "module load fastqc\n"
+		execution_script += "module load fastqc/0.11.9\n"
 		execution_script += "FASTQC=$(which fastqc)\n"
 	elif general_Dict["CONFIG"]["EXECUTION_PLATFORM"] == "BIGSKY":
 		execution_script += "FASTQC=$(which fastqc)\n"

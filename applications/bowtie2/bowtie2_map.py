@@ -21,10 +21,11 @@ def bowtie2_map_script(general_Dict):
 	IO_Dict = {}
 	execution_script = ""
 	# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	TARGET_REFERENCE_LIST = general_Dict["CONFIG"]["TARGET_REFERENCE_INDEX"]
+	TARGET_REFERENCE_LIST = general_Dict["CONFIG"]["TARGET_LIST"]
+	TARGET_REFERENCE_PATH = general_Dict["CONFIG"]["TARGET_REFERENCE_PATH"]
 	PLATFORM = general_Dict["CONFIG"]["EXECUTION_PLATFORM"]
 	SNAKERULE = general_Dict["SNAKERULE"]
-	TARGET_REFERENCE_DICT = general_Dict["CONFIG"]["TARGET_REFERENCE"][PLATFORM]
+	#TARGET_REFERENCE_DICT = general_Dict["CONFIG"]["REFERENCE"]["TARGET_REFERENCE"][PLATFORM]
 	IO_Dict["NCORE"] = 5
 	# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	execution_script += "# +++++++++++++++++++++++++++++++++++++++++++\n"
@@ -51,7 +52,7 @@ def bowtie2_map_script(general_Dict):
 		# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		OUTPUT = general_Dict["CONFIG"]["OUTPUT"]
 		TITLE = general_Dict["CONFIG"]["TITLE"]
-		IO_Dict["TARGET_REF"] = OUTPUT + "/" + TITLE + "/custom_virmapDB/output/" + each_target + "/" + each_target
+		IO_Dict["TARGET_REF"] = TARGET_REFERENCE_PATH + "/" + each_target + "/" + each_target
 		# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		if len(general_Dict["INPUT"]) > 1:
 			IO_Dict["INPUT1"] = general_Dict["INPUT"][0]

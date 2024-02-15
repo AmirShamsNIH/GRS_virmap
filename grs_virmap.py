@@ -13,6 +13,7 @@ import argparse
 import json
 import glob
 import subprocess
+import pandas
 # ################################### CONSTANT ################################## #
 __author__   = 'Amir Shams'
 __version__  = 'v0.0.1'
@@ -177,6 +178,46 @@ def verify_target_reference(target_reference_Dict, target_reference_index_List):
 	return True
 
 
+def verify_target_reference_path(target_reference_path):
+	"""
+	"""
+	# ++++++++
+	if is_path_readable(target_reference_path) is False:
+		print("target_reference_path is not accessible; either not exist or not readable!!")
+		print("target_reference_path:", target_reference_path)
+		print("Aborting!!")
+		sys.exit(2)
+	# ++++++++
+	snpEFF_config_file_path = target_reference_path + "/snpEff.config"
+	if is_file_exist(snpEFF_config_file_path) is False:
+		#
+		print("snpEff.config is missing in targete reference path")
+		print("snpEFF_config_file_path:", snpEFF_config_file_path)
+		print("Aborting!!")
+		sys.exit(2)
+	return True
+	
+
+def verify_target_list(target_reference_path, target_List):
+	"""
+	"""
+	snpEFF_config_file_path = target_reference_path + "/snpEff.config"
+	snpEFF_DF = pandas.read_csv(snpEFF_config_file_path, sep=": ", header=None, engine='python')
+	for each_target in target_List:
+		##
+		if each_target not in snpEFF_DF[1].values:
+			#
+			print("target is not listed in target reference")
+			print("target_reference_path:", target_reference_path)
+			print("snpEFF_config_file_path:", snpEFF_config_file_path)
+			print("target:", each_target)
+			print("Aborting!!")
+			sys.exit(2)
+	else:
+		pass
+	return True
+
+
 def verify_contamination_reference(target_reference_Dict, contamination_reference_index_List):
 	"""
 	"""
@@ -283,50 +324,24 @@ def validate_input_json(json_file_path):
 		metadata_file_path = input_json_Dict["METADATA"]
 		verify_metadata(metadata_file_path)
 	# ++++++++++++++++++++++++++++
-	if "TARGET_REFERENCE_INDEX" in input_json_Dict:
+	if "TARGET_LIST" in input_json_Dict:
 		#
-		target_reference_index_List = input_json_Dict["TARGET_REFERENCE_INDEX"]
-		if "TARGET_REFERENCE" in input_json_Dict:
-			target_reference_Dict = input_json_Dict["TARGET_REFERENCE"][execution_platform]
-			verify_target_reference(target_reference_Dict, target_reference_index_List)
+		target_List = input_json_Dict["TARGET_LIST"]
+		if "TARGET_REFERENCE_PATH" in input_json_Dict:
+			target_reference_path = input_json_Dict["TARGET_REFERENCE_PATH"]
+			verify_target_reference_path(target_reference_path)
+			verify_target_list(target_reference_path, target_List)
+			#target_reference_Dict = input_json_Dict["TARGET_REFERENCE"][execution_platform]
+			#verify_target_reference(target_reference_Dict, target_reference_index_List)
 		else:
-			print("TARGET_REFERENCE value is required!")
+			print("TARGET_REFERENCE_PATH value is required!")
 			print("Aborting!!")
 			sys.exit(2)
 	else:
-		print("TARGET_REFERENCE_INDEX value is required!")
+		print("TARGET_LIST value is required!")
 		print("Aborting!!")
 		sys.exit(2)
-	# ++++++++++++++++++++++++++++
-	if "CONTAMINATION_REFERENCE_INDEX" in input_json_Dict:
-		#
-		contamination_reference_index_List = input_json_Dict["CONTAMINATION_REFERENCE_INDEX"]
-		if "CONTAMINATION_REFERENCE" in input_json_Dict:
-			contamination_reference_Dict = input_json_Dict["CONTAMINATION_REFERENCE"][execution_platform]
-			verify_contamination_reference(contamination_reference_Dict, contamination_reference_index_List)
-		else:
-			print("CONTAMINATION_REFERENCE value is required!")
-			print("Aborting!!")
-			sys.exit(2)
-	else:
-		print("CONTAMINATION_REFERENCE_INDEX value is required!")
-		print("Aborting!!")
-		sys.exit(2)
-	# ++++++++++++++++++++++++++++
-	if "KRAKEN2_REFERENCE_INDEX" in input_json_Dict:
-		#
-		kraken2_reference_index_List = input_json_Dict["KRAKEN2_REFERENCE_INDEX"]
-		if "KRAKEN2_REFERENCE" in input_json_Dict:
-			kraken2_reference_Dict = input_json_Dict["KRAKEN2_REFERENCE"][execution_platform]
-			verify_kraken2_reference(kraken2_reference_Dict, kraken2_reference_index_List)
-		else:
-			print("KRAKEN2_REFERENCE value is required!")
-			print("Aborting!!")
-			sys.exit(2)
-	else:
-		print("KRAKEN2_REFERENCE_INDEX value is required!")
-		print("Aborting!!")
-		sys.exit(2)
+
 	# ++++++++++++++++++++++++++++
 	print("input_json validated!")
 

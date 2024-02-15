@@ -20,7 +20,7 @@ def bowtie2_decon_script(general_Dict):
 	IO_Dict = {}
 	execution_script = ""
 	# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	CONTAMINATION_LIST = general_Dict["CONFIG"]["CONTAMINATION_REFERENCE_INDEX"]
+	CONTAMINATION_LIST = general_Dict["CONFIG"]["REFERENCE"]["CONTAMINATION_REFERENCE_INDEX"]
 	PLATFORM = general_Dict["CONFIG"]["EXECUTION_PLATFORM"]
 	PREFIX = os.path.basename(general_Dict["INPUT"][0]).split(".R1.fastq.gz")[0]
 	# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -39,7 +39,7 @@ def bowtie2_decon_script(general_Dict):
 		##
 		# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		each_contamination_index  = CONTAMINATION_LIST.index(each_contamination)
-		IO_Dict["CONTAMINATION_REF"] = general_Dict["CONFIG"]["CONTAMINATION_REFERENCE"][PLATFORM][each_contamination]
+		IO_Dict["CONTAMINATION_REF"] = general_Dict["CONFIG"]["REFERENCE"]["CONTAMINATION_REFERENCE"][PLATFORM][each_contamination]
 		extra_script = "# +++++++++++++++++++++++++++++++++++++++++++\n"
 		extra_script += "cp " + general_Dict["OUTPUT_PATH"] + PREFIX + "." + each_contamination + "_unmapped.R1.fastq.gz " + general_Dict["OUTPUT_PATH"] + PREFIX + ".bowtie2_decon.R1.fastq.gz \n"
 		extra_script += "cp " + general_Dict["OUTPUT_PATH"] + PREFIX + "." + each_contamination + "_unmapped.R2.fastq.gz " + general_Dict["OUTPUT_PATH"] + PREFIX + ".bowtie2_decon.R2.fastq.gz \n"

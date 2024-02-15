@@ -21,7 +21,9 @@ def freebayes_haplotypecaller_script(general_Dict):
 	execution_script = ""
 	# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	PLATFORM = general_Dict["CONFIG"]["EXECUTION_PLATFORM"]
-	TARGET_REFERENCE_DICT = general_Dict["CONFIG"]["TARGET_REFERENCE"][PLATFORM]
+	#TARGET_REFERENCE_DICT = general_Dict["CONFIG"]["REFERENCE"]["TARGET_REFERENCE"][PLATFORM]
+	TARGET_REFERENCE_LIST = general_Dict["CONFIG"]["TARGET_LIST"]
+	TARGET_REFERENCE_PATH = general_Dict["CONFIG"]["TARGET_REFERENCE_PATH"]
 	IO_Dict["NCORE"] = 5
 	# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	execution_script += "# ++++++++++++++++++++++++++++++++++++++++++++\n"
@@ -54,6 +56,7 @@ def freebayes_haplotypecaller_script(general_Dict):
 		IO_Dict["OUTPUT1"] = general_Dict["OUTPUT_PATH"] + PREFIX + ".freebayes_haplotypecaller.vcf.gz"
 		IO_Dict["OUTPUT2"] = general_Dict["OUTPUT_PATH"] + PREFIX + ".freebayes_haplotypecaller.txt"
 		IO_Dict["OUTPUT3"] = general_Dict["OUTPUT_PATH"]  + PREFIX + ".freebayes_haplotypecaller.snpeff.vcf.gz"
+		IO_Dict["OUTPUT4"] = general_Dict["OUTPUT_PATH"] + PREFIX + ".freebayes_haplotypecaller.snpeff.txt"
 		#+
 		IO_Dict["REPORT1"] = general_Dict["REPORT_PATH"] + PREFIX + ".freebayes_haplotypecaller.bcftools_stats.txt"
 		IO_Dict["REPORT2"] = general_Dict["REPORT_PATH"] + PREFIX + ".freebayes_haplotypecaller.rtg_vcfstats.txt"
@@ -64,10 +67,10 @@ def freebayes_haplotypecaller_script(general_Dict):
 		OUTPUT = general_Dict["CONFIG"]["OUTPUT"]
 		TITLE = general_Dict["CONFIG"]["TITLE"]
 		IO_Dict["TARGET_REF_NAME"] = TARGET
-		IO_Dict["TARGET_REF"] = OUTPUT + "/" + TITLE + "/custom_virmapDB/output/" + TARGET + "/" + TARGET + ".fa"
+		IO_Dict["TARGET_REF"] = TARGET_REFERENCE_PATH + "/" + TARGET + "/" + TARGET + ".fa"
 		#IO_Dict["TARGET_REF"] = TARGET_REFERENCE_DICT[TARGET].split(".fa")[0] + ".fa"
 		IO_Dict["OUTPUT_PATH"] = general_Dict["OUTPUT_PATH"]
-		IO_Dict["SNPEFF_CONFIG"] = OUTPUT + "/" + TITLE + "/custom_virmapDB/output/snpEff.config"
+		IO_Dict["SNPEFF_CONFIG"] = TARGET_REFERENCE_PATH + "/snpEff.config"
 		IO_Dict["NCORE"] = 5
 		IO_Dict["freebayes_haplotypecaller_parameters"] = general_Dict["CONFIG"]["PARAMETERS"]["VARIANT_CALLING"]["freebayes_haplotypecaller"]
 		IO_Dict["snpeff_ann_parameters"] = general_Dict["CONFIG"]["PARAMETERS"]["VARIANT_CALLING"]["snpeff_ann"]
@@ -117,6 +120,13 @@ def freebayes_haplotypecaller_script(general_Dict):
 			-config {SNPEFF_CONFIG} -v {TARGET_REF_NAME} -csvStats {REPORT3} -stats {REPORT4}  \\
 			{OUTPUT1} > {OUTPUT3}.tmp 2>> {LOG_FILE} 
 
+			$GATK VariantsToTable \\
+			-F CHROM -F POS -F TYPE -F REF -F ALT -F ANN -GF AD  \\
+			-R {TARGET_REF} \\
+			-V {OUTPUT3}.tmp \\
+			-O {OUTPUT4} \\
+			>> {LOG_FILE} 2>&1
+
 			$BGZIP \\
 			-c {OUTPUT3}.tmp \\
 			> {OUTPUT3} \\
@@ -129,7 +139,7 @@ def freebayes_haplotypecaller_script(general_Dict):
 			
 
 			
-			rm {OUTPUT_PATH}*.tmp
+			#rm {OUTPUT_PATH}*.tmp
 		""".format(**IO_Dict)
 		execution_script += "# --------------------------------------------\n"
 

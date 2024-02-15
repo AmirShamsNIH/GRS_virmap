@@ -1,0 +1,69 @@
+{
+    "REFERENCE":{
+
+        "CONTAMINATION_REFERENCE_INDEX": ["HUMAN_RIBOSOMAL", "HUMAN_REPEAT", "VIRAL_PHIX"],
+        
+        "KRAKEN2_REFERENCE_INDEX": ["KRAKEN2_VIRAL", "KRAKEN2_STANDARD"],
+
+        "CONTAMINATION_REFERENCE":{
+            "BIOWULF":{
+                "HUMAN_RIBOSOMAL": "/data/RTB_GRS/references/virmap_reference/human/humRibosomal/humRibosomal",
+                "HUMAN_REPEAT": "/data/RTB_GRS/references/virmap_reference/human/repeat/repeat",
+                "HUMAN_GENOME": "/fdb/igenomes/Homo_sapiens/UCSC/hg38/Sequence/Bowtie2Index/genome",
+                "VIRAL_PHIX": "/data/RTB_GRS/references/virmap_reference/human/phiX/phiX",
+                "PROK_GENOME": "/data/RTB_GRS/references/virmap_reference/prok/ref_prok_genomes.fa"
+            },
+            "BIGSKY":{
+                "HUMAN_RIBOSOMAL": "/gs1/RTS/NextGen/ngs_dbs/vertebrate/Homo_sapiens/hg38/bowtie2/humRibosomal",
+                "HUMAN_REPEAT": "/gs1/RTS/NextGen/ngs_dbs/other/repeat",
+                "VIRAL_PHIX": "/gs1/RTS/NextGen/ngs_dbs/virus/PhiX/phiX",
+                "PROK_GENOME": "/gs1/RTS/NextGen/ngs_dbs/bacteria/VirCapSeq/ref_prok_genomes"
+            }
+        },
+    
+        "KRAKEN2_REFERENCE":{
+            "BIOWULF":{
+                "KRAKEN2_VIRAL": "/fdb/kraken/20230605_viral_kraken2",
+                "KRAKEN2_STANDARD": "/fdb/kraken/20220803_standard_kraken2"
+            },
+            "BIGSKY":{
+                "KRAKEN2_VIRAL": "/gs1/RTS/NextGen/kraken_db/K2/k2_standard",
+                "KRAKEN2_STANDARD": "/gs1/RTS/NextGen/kraken_db/K2/k2_standard"
+            }
+        },
+
+        "TARGET_REFERENCE":{
+            "BIOWULF":{
+                "EPI_ISL_17977757": {
+                    "fasta": "/data/shamsaddinisha/Test_Space/GRS_virmap/virmap_ref/EPI_ISL_17977757.fa",
+                    "gtf": "/data/shamsaddinisha/Test_Space/GRS_virmap/virmap_ref/EPI_ISL_17977757.gff3"
+                },
+                "RML_18497": {
+                    "fasta": "/data/shamsaddinisha/Test_Space/GRS_virmap/virmap_ref/RML_18497_UK.fa",
+                    "gtf": "/data/shamsaddinisha/Test_Space/GRS_virmap/virmap_ref/RML_18497.gff"
+                },
+                "EPI_ISL_1823618": {
+                    "fasta": "/data/shamsaddinisha/Test_Space/GRS_virmap/virmap_ref/EPI_ISL_1823618.fa",
+                    "gtf": "/data/shamsaddinisha/Test_Space/GRS_virmap/virmap_ref/EPI_ISL_1823618.gff"
+                }
+            },
+            "BIGSKY":{
+                "EPI_ISL_17977757": {
+                    "fasta": "/gs1/RTS/NextGen/ngs_dbs/virus/Coronavirus/EPI_ISL_17977757.fa",
+                    "gtf": "/gs1/RTS/NextGen/ngs_dbs/virus/Coronavirus/EPI_ISL_17977757.gff3"
+                },
+                "RML_18497": {
+                    "fasta": "/gs1/RTS/NextGen/ngs_dbs/virus/Coronavirus/RML_18497_UK.fa",
+                    "gtf": "/gs1/RTS/NextGen/ngs_dbs/virus/Coronavirus/RML_18497.gff"
+                },
+                "EPI_ISL_1823618": {
+                    "fasta": "/gs1/RTS/NextGen/ngs_dbs/virus/Coronavirus/EPI_ISL_1823618.fa",
+                    "gtf": "/gs1/RTS/NextGen/ngs_dbs/virus/Coronavirus/EPI_ISL_1823618.gff"
+                }
+            }
+
+        }
+
+    }
+    
+}

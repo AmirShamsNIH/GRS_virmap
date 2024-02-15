@@ -20,9 +20,9 @@ def kraken2_map_script(general_Dict):
 	IO_Dict = {}
 	execution_script = ""
 	# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	KRAKEN2_REFERENCE_LIST = general_Dict["CONFIG"]["KRAKEN2_REFERENCE_INDEX"]
+	KRAKEN2_REFERENCE_LIST = general_Dict["CONFIG"]["REFERENCE"]["KRAKEN2_REFERENCE_INDEX"]
 	PLATFORM = general_Dict["CONFIG"]["EXECUTION_PLATFORM"]
-	REFERENECE_DICT = general_Dict["CONFIG"]["KRAKEN2_REFERENCE"][PLATFORM]
+	REFERENECE_DICT = general_Dict["CONFIG"]["REFERENCE"]["KRAKEN2_REFERENCE"][PLATFORM]
 	IO_Dict["NCORE"] = 5
 	# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	execution_script += "# +++++++++++++++++++++++++++++++++++++++++++\n"

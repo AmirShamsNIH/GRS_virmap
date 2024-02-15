@@ -317,21 +317,28 @@ def main():
 		pass
 	# ++++++++++++++++++++++++++++
 	pipeline_directory = os.path.dirname(os.path.realpath(__file__))
-	parameters_json_file_path = pipeline_directory + "/../template/grs_virmap_parameters.json"
+	parameters_json_file_path = pipeline_directory + "/../reference/grs_virmap_parameters.json"
+	
 	
 	f = open(parameters_json_file_path, "r")
 	parameters_json_Dict = json.load(f)
 
 	input_json_Dict["PARAMETERS"] = parameters_json_Dict["PARAMETERS"]
 	# +++++++++++++++++++++++++++++
+	reference_json_file_path = pipeline_directory + "/../reference/grs_virmap_reference.json"
+	f = open(reference_json_file_path, "r")
+	reference_json_Dict = json.load(f)
+
+	input_json_Dict["REFERENCE"] = reference_json_Dict["REFERENCE"]
+
+	# +++++++++++++++++++++++++++++
 	execution_Json = json.dumps(input_json_Dict, indent=4)
+	
 	o=open(json_file_path, "w")
 	o.write(execution_Json)
 	o.close()
 	
 	
-	
-
 	# +++++++++++++++++++++++++++++
 	execution_bash_script = build_execution_snakemake_script(json_file_path, input_json_Dict)
 	excution_file_path = output_directory + "/" + TITLE + ".execution_script.sh"
